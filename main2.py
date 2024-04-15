@@ -40,10 +40,18 @@ class ReservationTicket:
         content = f"""
         Thank you for your reservation! 
         Here are you booking data: 
-        Name: {self.customer_name} 
+        Name: {self.the_customer_name} 
         Hotel name: {self.hotel.name}
         """
         return content
+
+
+    @property
+    def the_customer_name(self):
+        name = self.customer_name.strip()
+        name = name.title()
+        return name
+
 
 
 hotel1= Hotel(hotel_id="188")
@@ -57,6 +65,10 @@ print(hotel2.watermark)
 
 print(Hotel.watermark)
 print(Hotel.get_hotel_count(data=df))
+
+ticket = ReservationTicket(customer_name="john smith ", hotel_object=hotel1)
+print(ticket.the_customer_name)
+print(ticket.generate())
 
 
 
